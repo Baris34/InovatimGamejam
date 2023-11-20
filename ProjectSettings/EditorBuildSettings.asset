@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SkillTreeScene.unity
-    guid: 3a47da04bb615504989f6bc72f48375d
+    path: Assets/UI/StartSettingsScene.unity
+    guid: 996b5f79f30bed545aa0f7d532a0a411
+  - enabled: 1
+    path: Assets/UI/DenemeSahneSil.unity
+    guid: 90981e77d0330d2448fc6a52692d7eac
   m_configObjects: {}
