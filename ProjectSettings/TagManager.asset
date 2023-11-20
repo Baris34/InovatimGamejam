@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Planet
+  - Maden
+  - Deniz
+  - Kum
+  - "R\xFCzgar"
+  - MadenTutucu
   layers:
   - Default
   - TransparentFX

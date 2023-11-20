@@ -8,16 +8,14 @@ public class UICodeScene_PlanetManager : MonoBehaviour
 
     private RawMaterialType Hammadde;
     public FabrikaUretim uretimState;
-
-    public int KomurAdet;
-    public int BakirAdet;
-    public int DemirAdet;
+    
+    public static int SilikonAdet;
+    public static int DemirAdet;
+    public static int EnerjiSayi;
     [SerializeField]
     private int GezegenKapasite; // kaosüle baðla 
     [SerializeField]
     private float timer;
-    [SerializeField]
-    private int UretilenHammadde;
     [SerializeField]
     private int UretimSayisi;
     
@@ -33,12 +31,10 @@ public class UICodeScene_PlanetManager : MonoBehaviour
     public enum FabrikaUretim
     {
         Hepsi,
-        KömürBakýr,
-        KömürDemir,
-        BakýrDemir,
-        Kömür,
-        Bakýr,
-        Demir
+        SilikonDemir,
+        Silikon,
+        Demir,
+        Enerji
     }
 
     void Start()
@@ -55,9 +51,10 @@ public class UICodeScene_PlanetManager : MonoBehaviour
     
     public void ProductMetod()
     {
-        int komurCarpan = (int)(Random.Range(1, 5));
-        int bakirCarpan = (int)(Random.Range(1, 3));
+
+        int silikonCarpan = (int)(Random.Range(1, 3));
         int demirCarpan = (int)(Random.Range(1, 3));
+        int enerjiCarpan = (int)(Random.Range(1, 3));
         if (!acikMi)
         {
             return;
@@ -71,33 +68,23 @@ public class UICodeScene_PlanetManager : MonoBehaviour
             switch (uretimState)
             {
 
-                case FabrikaUretim.Bakýr:
-                        BakirAdet += UretimSayisi * bakirCarpan;
-                    
+                case FabrikaUretim.Silikon:
+                    SilikonAdet += UretimSayisi * silikonCarpan;
+                    UIManager.Instance.setSilikonText(SilikonAdet );
                     break;
                 case FabrikaUretim.Demir:
-                        DemirAdet += UretimSayisi * demirCarpan;
-                    
-                    break;
-                case FabrikaUretim.Kömür:
-                    KomurAdet += UretimSayisi * komurCarpan;
-                    break;
-                case FabrikaUretim.BakýrDemir:
-                    BakirAdet += UretimSayisi * bakirCarpan;
                     DemirAdet += UretimSayisi * demirCarpan;
+                    UIManager.Instance.setDemirText(DemirAdet );
                     break;
-                case FabrikaUretim.KömürBakýr:
-                    KomurAdet += UretimSayisi * komurCarpan;
-                    BakirAdet += UretimSayisi * bakirCarpan;
-                    break;
-                case FabrikaUretim.KömürDemir:
-                    KomurAdet += UretimSayisi * komurCarpan;
+                case FabrikaUretim.SilikonDemir:
+                    SilikonAdet += UretimSayisi * silikonCarpan;
                     DemirAdet += UretimSayisi * demirCarpan;
+                    UIManager.Instance.setSilikonText(SilikonAdet );
+                    UIManager.Instance.setDemirText(DemirAdet );
                     break;
-                case FabrikaUretim.Hepsi:
-                    KomurAdet += UretimSayisi * komurCarpan;
-                    BakirAdet += UretimSayisi * bakirCarpan;
-                    DemirAdet += UretimSayisi * demirCarpan;
+                case FabrikaUretim.Enerji:
+                    EnerjiSayi += UretimSayisi*enerjiCarpan ;
+                    UIManager.Instance.setEnerjiText(EnerjiSayi);
                     break;
                 default:
                     break;
